@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="~{base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SMP</title>
+</head>
+
+<body>
+
+<section>
+
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <div class="card mt-3">
+                <div class="card-body">
+
+                    <h4 class="text-center">Employee Registration Form</h4>
+                    <hr>
+
+                    <form th:action="@{/save-employee}" method="post" th:object="${employee}">
+
+                        <div class="row">
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Employee Name</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="text" th:field="*{employeeName}">
+                                <p th:if="${#fields.hasErrors('employeeName')}" 
+                                   th:errors="*{employeeName}" class="text-danger"></p>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Email</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="text" th:field="*{email}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Gender</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input type="radio" class="form-check-input" th:field="*{gender}" value="M"> Male
+                                <input type="radio" class="form-check-input ms-4" th:field="*{gender}" value="F"> Female
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Date of Birth</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="date" th:field="*{dateOfBirth}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Joining Date</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="date" th:field="*{joinDate}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Mobile Number</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="number" th:field="*{mobileNumber}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Aadhaar Number</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="number" th:field="*{aadhaarNumber}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Account Number</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="text" th:field="*{accountNumber}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Department</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <select class="form-select" th:field="*{department}" onchange="updateDesignations()">
+                                    <option value="">Select Department</option>
+                                    <option value="Development">Development</option>
+                                    <option value="QA & Automation Testing">QA & Automation Testing</option>
+                                    <option value="Networking">Networking</option>
+                                    <option value="HR Team">HR Team</option>
+                                    <option value="Security">Security</option>
+                                    <option value="Sales & Marketing">Sales & Marketing</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Designation</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <select class="form-select" th:field="*{designation}">
+                                    <option value="">Select Designation</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Previous Company</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="text" th:field="*{previousCompany}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">PF Number</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="text" th:field="*{pfNumber}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Salary</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input class="form-control" type="number" th:field="*{salary}">
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Current Address</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <textarea class="form-control" th:field="*{currentAddress}"></textarea>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Permanent Address</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <textarea class="form-control" th:field="*{permanentAddress}"></textarea>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Role</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <select class="form-select" th:field="*{role}">
+                                    <option value="USER">User</option>
+                                    <option value="ADMIN">Admin</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label class="form-label">Active</label>
+                            </div>
+                            <div class="col-md-9 mt-2">
+                                <input type="checkbox" class="form-check-input" th:field="*{active}">
+                            </div>
+
+                            <div class="text-center mt-3">
+                                <input type="submit" class="btn btn-success" value="Submit">
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/emp.js}"></script>
+
+</body>
+</html>
