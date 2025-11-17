@@ -32,7 +32,7 @@
        <div class="btn-group dropstart">
 		     <img src="img/default.png" class="me-2" data-bs-toggle="dropdown"   aria-expanded="false" style="width: 35px; height: 35px; cursor: pointer; border-radius: 50%">
 		     <ul class="dropdown-menu">
-		   <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> &nbsp;&nbsp; <span th:text="${session.name}">Sonu Kumar Pandit</span></a></li> 
+		   <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> &nbsp;&nbsp; <span th:text="${session.employee.employeeName}">Sonu Kumar Pandit</span></a></li> 
 			<li><a class="dropdown-item" href="#"><i class="fas fa-laptop-code"></i>&nbsp; <span th:text="${session.desg}">Software Engineer</span></a></li><hr>
 			<li><a class="dropdown-item" th:href="@{/login}"><i class="fas fa-sign-out-alt"></i>&nbsp; Log out</a></li>
 

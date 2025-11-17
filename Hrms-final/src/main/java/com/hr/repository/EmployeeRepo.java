@@ -9,7 +9,6 @@ import com.hr.entity.Employee;
 public interface EmployeeRepo extends JpaRepository<Employee, Integer>{
 	
 	public Employee findByIdAndPassword(int empId, String password);
-	
-	
+
 
 }

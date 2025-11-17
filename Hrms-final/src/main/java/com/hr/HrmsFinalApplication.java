@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HrmsFinalApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(HrmsFinalApplication.class, args);
 	}
 
